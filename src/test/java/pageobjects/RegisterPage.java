@@ -1,6 +1,5 @@
 package pageobjects;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -104,8 +103,7 @@ public class RegisterPage extends BaseActionElement {
     public void fillInputPassword( String text ) {
 
         inputPassword.sendKeys( text );
-        JavascriptExecutor jse = (JavascriptExecutor)driver;
-        jse.executeScript("scrollBy(0,250)", "");
+        scrollPage( "250" );
 
     }
 

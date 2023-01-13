@@ -2,14 +2,27 @@ package utils;
 
 import org.junit.After;
 import org.junit.Before;
+import org.openqa.selenium.JavascriptExecutor;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import static utils.Browser.close;
 import static utils.Browser.getCurrentDriver;
+import static utils.Browser.driver;
 
 public class BaseTest {
+
+        
+    public void scrollPage( String value ) {
+
+        JavascriptExecutor jse = (JavascriptExecutor)driver;
+        jse.executeScript("scrollBy(0," + value + ")", "");
+
+    }
+
+
 
     public String cpfValidGenerator() throws Exception{
 
