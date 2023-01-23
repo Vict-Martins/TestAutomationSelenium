@@ -3,196 +3,131 @@ package pageobjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
+
+import com.github.javafaker.PhoneNumber;
+
 import utils.BaseActionElement;
 import utils.Browser;
-import static utils.Browser.driver;
 
 public class RegisterPage extends BaseActionElement {
 
-    @FindBy( xpath = "//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[4]/a" )
-    private WebElement btnSignIn;
-
-    @FindBy( css = ".signup-form > form:nth-child(2) > input:nth-child(2)" )
-    private WebElement inputName;
-
-    @FindBy( css = ".signup-form > form:nth-child(2) > input:nth-child(3)" )
-    private WebElement inputEmail;
-
-    @FindBy( css = "button.btn:nth-child(5)" )
-    private WebElement btnSignUp;
-
-    @FindBy( css = "div.radio-inline:nth-child(3) > label:nth-child(1)")
-    private WebElement labelTitle;
-
-    @FindBy( css = "#password")
-    private WebElement inputPassword;
-
-    @FindBy( css = "#days")
-    private WebElement selectDay;
-
-    @FindBy( css = "#months")
-    private WebElement selectMonths;
-
-    @FindBy( css = "#years")
-    private WebElement selectYears;
-
-    @FindBy( css = "#first_name" )
+    @FindBy( id = "customer.firstName" )
     private WebElement inputFirstName;
 
-    @FindBy( css = "#last_name" )
+    @FindBy( id = "customer.lastName" )
     private WebElement inputLastName;
 
-    @FindBy( css = "#company" )
-    private WebElement inputCompany;
-
-    @FindBy( css = "#address1")
+    @FindBy( id = "customer.address.street" )
     private WebElement inputAddress;
 
-    @FindBy( css = "#address2" )
-    private WebElement inputAddress2;
-
-    @FindBy( css = "#country" )
-    private WebElement selectCountry;
-
-    @FindBy( css = "#state" )
-    private WebElement inputState;
-
-    @FindBy( css = "#city" )
+    @FindBy( id = "customer.address.city" )
     private WebElement inputCity;
 
-    @FindBy( css = "#zipcode" )
+    @FindBy( id = "customer.address.state" )
+    private WebElement inputState;
+
+    @FindBy( id = "customer.address.zipCode" )
     private WebElement inputZipCode;
 
-    @FindBy( css = "#mobile_number" )
-    private WebElement inputMobileNumber;
+    @FindBy( id = "customer.phoneNumber" )
+    private WebElement inputPhone;
 
-    @FindBy( css = "button.btn:nth-child(22)" )
-    private WebElement btnCreateAccount;
+    @FindBy( id = "customer.ssn" )
+    private WebElement inputSsn;
 
-    @FindBy( xpath = "//*[@id=\"form\"]/div/div/div/div" )
-    private WebElement btnContinue;
+    @FindBy( id = "customer.username" )
+    private WebElement inputUserName;
 
-    @FindBy( id= "aswift_2" )
-    private WebElement iframeAd;
+    @FindBy( id = "customer.password" )
+    private WebElement inputPassword;
 
-    @FindBy( id= "ad_iframe" )
-    private WebElement iframe2;
+    @FindBy( id = "repeatedPassword" )
+    private WebElement inputRepeatPassword;
 
-    @FindBy( id = "dismiss-button" )
-    private WebElement btnClosed;
+    @FindBy( css = "input[value='Register']" )
+    private WebElement btnRegister;
 
-    @FindBy( xpath = "//*[@id=\"header\"]/div/div/div/div[2]/div/ul/li[5]/a" )
-    private WebElement btnDeleteAccount;
-
-    @FindBy( xpath = "//*[@id=\"form\"]/div/div/div/h2/b" )
-    private WebElement msgDeleteAccountValidator;
-
-    public void pressBtnSignIn() { btnSignIn.click(); }
-
-    public void fillNewUserSignUp( String name, String email ) {
-
-        inputName.sendKeys( name );
-        inputEmail.sendKeys( email );
-        btnSignUp.click();
-
-    }
-
-    public void pressLabelTitle(){ labelTitle.click(); }
-
-    public void fillInputPassword( String text ) {
-
-        inputPassword.sendKeys( text );
-        scrollPage( "250" );
-
-    }
-
-    public void selectDate( int day, int months, String year ) throws InterruptedException {
-
-        Select selectD = new Select( selectDay );
-        selectD.selectByIndex( day );
-        delay( 1 );
-        Select selectM = new Select( selectMonths );
-        selectM.selectByIndex( months );
-        delay( 1 );
-        Select selectY = new Select( selectYears );
-        selectY.selectByValue( year );
-        delay( 1 );
-
-    }
-
-    public void fillName( String first, String last) throws InterruptedException {
+    public void fillInputFirstName( String first ) {
 
         inputFirstName.sendKeys( first );
-        delay(1);
+
+    }
+
+    public void fillInputLastName( String last ) {
+
         inputLastName.sendKeys( last );
 
     }
 
-    public void fillCompany( String text ) { inputCompany.sendKeys( text ); }
+    public void fillInputAddress( String address ) {
 
-    public void fillAddress( String one, String two) throws InterruptedException {
-
-        inputAddress.sendKeys( one );
-        delay( 1 );
-        inputAddress2.sendKeys( two );
+        inputAddress.sendKeys( address );
 
     }
 
-    public void fillCountry( String country ) {
+    public void fillInputCity( String city ) {
 
-        Select select = new Select( selectCountry );
-        select.selectByValue( country );
-
-    }
-
-    public void fillInputState( String text ){ inputState.sendKeys( text ); }
-
-    public void fillCity( String text ){ inputCity.sendKeys( text ); }
-
-    public void fillZipCode( String text ){ inputZipCode.sendKeys( text ); }
-
-    public void fillMobileNumber( String number ) {
-
-        inputMobileNumber.sendKeys( number );
-        btnCreateAccount.click();
+        inputCity.sendKeys( city );
 
     }
 
-    public void pressBtnContinue() throws InterruptedException {
+    public void fillInputState( String state ) {
 
-        delay( 1 );
-        btnContinue.click();
-
-    }
-
-    public void selectIframe() throws InterruptedException {
-
-        delay( 1 );
-        driver.switchTo().frame( iframeAd );
-        delay( 1 );
-        driver.switchTo().frame( iframe2 );
+        inputState.sendKeys( state );
 
     }
 
-    public void pressBtnClosed() throws InterruptedException {
+    public void fillInputZipCode( String zipcode ) {
 
-        delay( 1 );
-        btnClosed.click();
-
-    }
-
-    public void pressBtnDeleteAccount() throws InterruptedException {
-
-        delay( 1 );
-        btnDeleteAccount.click();
-
+        inputZipCode.sendKeys( zipcode );
 
     }
 
-    public boolean returnMsgDeleteAccount( String text ) {
+    public void fillInputPhone( String phone ) {
 
-       return returnMessage( msgDeleteAccountValidator, text );
+        inputPhone.sendKeys( phone );
+
+    }
+
+    public void fillInputSsn( String ssn ) {
+
+        inputSsn.sendKeys( ssn );
+
+    }
+
+    public void fillInputUserName( String username ) {
+
+        inputUserName.sendKeys( username );
+
+    }
+
+    public void fillInputPassword( String password, String repeatPassword ) {
+
+        inputPassword.sendKeys( password );
+        inputRepeatPassword.sendKeys( repeatPassword );
+
+    }
+
+    public void pressBtnRegister() {
+
+        btnRegister.click();
+
+    }
+
+    public void fillRegister( String firstname, String lastname, String address, String city, String state, String zipcode, String phone, String ssn, String username, String password ) {
+
+        inputFirstName.sendKeys( firstname );
+        inputLastName.sendKeys( lastname );
+        inputAddress.sendKeys( address );
+        inputCity.sendKeys( city );
+        inputState.sendKeys( state );
+        inputZipCode.sendKeys( zipcode );
+        inputPhone.sendKeys( phone );
+        inputSsn.sendKeys( ssn );
+        inputUserName.sendKeys( username );
+        inputPassword.sendKeys( password );
+        inputRepeatPassword.sendKeys( password );
+        btnRegister.click();
 
     }
 
