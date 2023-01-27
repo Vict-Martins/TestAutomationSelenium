@@ -3,9 +3,6 @@ package pageobjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import com.github.javafaker.PhoneNumber;
-
 import utils.BaseActionElement;
 import utils.Browser;
 

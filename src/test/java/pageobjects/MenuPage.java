@@ -11,11 +11,11 @@ public class MenuPage extends BaseActionElement {
     @FindBy( xpath = "//a[contains(text(), \"Register\")]")
     private WebElement menuRegister;
 
-    public void goToRegister() {
+    @FindBy( xpath = "//a[contains(text(), 'Forgot login info?')]" )
+    private WebElement menuForgot;
 
-        menuRegister.click();
-
-    }
+    public void goToRegister() { menuRegister.click(); }
+    public void menuForgot() { menuForgot.click(); }
     
     public MenuPage() { PageFactory.initElements( Browser.getCurrentDriver(), this ); }
 
